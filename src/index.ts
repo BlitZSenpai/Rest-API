@@ -7,6 +7,8 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+import router from "router";
+
 dotenv.config();
 
 const app = express();
@@ -30,3 +32,5 @@ const MONGO_URL = process.env.MONGODB_URL
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
+
+app.use("/", router());
